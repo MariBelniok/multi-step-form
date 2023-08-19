@@ -1,0 +1,29 @@
+$heading: 32px;
+$large: 16px;
+$medium: 14px;
+$small: 12px;
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../../../assets/fonts/Ubuntu-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../../../assets/fonts/Ubuntu-Medium.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../../../assets/fonts/Ubuntu-Bold.ttf');
+  font-weight: 600;
+}
+
+@mixin font($size, $color, $weight: 400) {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}

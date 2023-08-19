@@ -1,0 +1,6 @@
+@use './shared/styles/fonts.scss' as *;
+@use './shared/styles/colors.scss' as *;
+
+h1 {
+  @include font($heading, $denim);
+}
