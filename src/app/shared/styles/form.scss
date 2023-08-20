@@ -1,0 +1,25 @@
+.form-fieldset {
+  display: grid;
+  gap: 8px;
+  border: none;
+}
+
+.input-label {
+  @include font($medium, $denim);
+}
+
+.input-field {
+  @include font($medium, $denim, 500);
+  border: 1px $border solid;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+
+  &::placeholder {
+    @include font($large, $grey);
+  }
+
+  &:focus {
+    outline-color: $purple;
+  }
+}
