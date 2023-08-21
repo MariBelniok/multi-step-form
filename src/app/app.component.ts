@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { StepperComponent } from './shared/components/stepper/stepper.component';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: true
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [StepperComponent],
+  standalone: true,
 })
 export class AppComponent {
-  title = 'multi-step-form';
+  public onCurrentStepChanged(step: number) {}
 }

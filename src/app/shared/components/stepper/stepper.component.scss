@@ -1,0 +1,57 @@
+@use './../../../shared/styles/utils' as *;
+@use './../../../shared/styles/colors' as *;
+@use './../../../shared/styles/fonts' as *;
+@use './../../../shared/styles/breakpoint' as *;
+
+:host {
+  @include grid($gap: 32px);
+  background-image: url('./../../../../assets/images/bg-sidebar-desktop.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 568px;
+  width: 274px;
+  padding: 40px 32px;
+
+  @include breakpoint {
+    @include flex(row, center, flex-start);
+    background-image: url('./../../../../assets/images/bg-sidebar-mobile.svg');
+    padding: 32px 0px;
+    height: 172px;
+    width: 100%;
+  }
+}
+
+div {
+  @include flex(row, flex-start, flex-start);
+  gap: 16px;
+}
+
+button {
+  background: transparent;
+  color: $white;
+  border: 1px solid $white;
+  border-radius: 50%;
+  outline: none;
+  padding: 8px 12px;
+  cursor: pointer;
+
+  &.selected {
+    color: $denim;
+    background: $sky-blue;
+    border: 1px solid $sky-blue;
+  }
+}
+
+h6 {
+  @include font($small, $light-blue)
+}
+
+label {
+  @include font($medium, $white, 600)
+}
+
+aside {
+  @include breakpoint {
+    display: none;
+  }
+}

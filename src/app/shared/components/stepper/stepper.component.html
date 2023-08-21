@@ -1,0 +1,16 @@
+<ng-container *ngFor="let step of steps; index as index">
+  <div>
+    <button
+      type="button"
+      [class.selected]="currentStep() === index"
+      (click)="onStep(index)"
+    >
+      {{ index + 1 }}
+    </button>
+
+    <aside>
+      <h6>{{ 'step ' + index | uppercase }}</h6>
+      <label>{{ step.label | uppercase }}</label>
+    </aside>
+  </div>
+</ng-container>
