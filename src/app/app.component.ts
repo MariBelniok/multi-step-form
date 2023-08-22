@@ -1,14 +1,20 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { StepperComponent } from './shared/components/stepper/stepper.component';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { TextInputComponent } from './shared/components/text-input/text-input.component';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [StepperComponent],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [TextInputComponent, ReactiveFormsModule],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  public control = new FormControl<string>('', [Validators.required, Validators.email]);
+
+  ngOnInit(): void {
+  }
+
   public onCurrentStepChanged(step: number) {}
 }

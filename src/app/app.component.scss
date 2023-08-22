@@ -1,2 +1,7 @@
 @use './shared/styles/fonts.scss' as *;
 @use './shared/styles/colors.scss' as *;
+
+div {
+  max-width: 500px;
+  padding: 50px;
+}

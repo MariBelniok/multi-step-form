@@ -6,7 +6,7 @@ export interface StepperStep {
 }
 
 @Component({
-  selector: 'app-stepper',
+  selector: 'stepper',
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss'],
   standalone: true,
