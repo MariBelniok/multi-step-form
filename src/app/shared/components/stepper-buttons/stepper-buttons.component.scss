@@ -1,0 +1,6 @@
+@use './../../styles/buttons';
+@use './../../styles/utils' as *;
+
+:host {
+  @include flex(row, space-between, center);
+}

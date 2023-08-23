@@ -21,6 +21,8 @@ main {
 
 form {
   padding: 56px 0px 0px 100px;
+  height: 100%;
+  position: relative;
 }
 
 header {
@@ -35,4 +37,11 @@ h1 {
 
 p {
   @include font($large, $grey);
+}
+
+.stepper-buttons {
+  position: absolute;
+  bottom: 32px;
+  width: 100%;
+  padding-right: 100px;;
 }

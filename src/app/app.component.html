@@ -13,5 +13,13 @@
     </header>
 
     <personal-info></personal-info>
+
+    <stepper-buttons
+      class="stepper-buttons"
+      [isFirstStep]="currentStep() === 0"
+      [isLastStep]="currentStep() === steps.length - 1"
+      (onPrevious)="onCurrentStepChanged('previous')"
+      (onNext)="onCurrentStepChanged('next')"
+    ></stepper-buttons>
   </form>
 </main>

@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@ang
 import { FormBuilder, Validators } from '@angular/forms';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { StepperComponent, StepperStep } from './shared/components/stepper/stepper.component';
+import { StepperButtonsComponent } from './shared/components/stepper-buttons/stepper-buttons.component';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { StepperComponent, StepperStep } from './shared/components/stepper/stepp
   styleUrls: ['./app.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [StepperComponent, PersonalInfoComponent],
+  imports: [StepperComponent, PersonalInfoComponent, StepperButtonsComponent],
 })
 export class AppComponent {
   public readonly steps: StepperStep[] = [
@@ -21,5 +22,9 @@ export class AppComponent {
 
   public currentStep = signal(0);
 
-  public onCurrentStepChanged(step: number) {}
+  public onCurrentStepChanged(direction: 'next' | 'previous') {
+    this.currentStep.update(currentStep =>
+      direction === 'next' ? currentStep + 1 : currentStep - 1,
+    );
+  }
 }

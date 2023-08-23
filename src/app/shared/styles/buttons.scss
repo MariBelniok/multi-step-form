@@ -1,0 +1,32 @@
+@use './colors' as *;
+@use './fonts' as *;
+
+button {
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+@mixin solid-button($backgroundColor) {
+  @include font($large, $white, 500);
+  background-color: $backgroundColor;
+  border-radius: 8px;
+  padding: 14px 24px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: darken($backgroundColor, 10%);
+  }
+}
+
+.text-button {
+  @include font($large, $grey, 500);
+}
+
+.primary-button {
+  @include solid-button($denim);
+}
+
+.confirm-button {
+  @include solid-button($purple);
+}

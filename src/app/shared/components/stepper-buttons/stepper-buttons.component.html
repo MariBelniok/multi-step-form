@@ -1,0 +1,16 @@
+<button
+  type="button"
+  class="text-button"
+  (click)="onPrevious.emit()"
+>
+  {{ isFirstStep ? '' : 'Go Back' }}
+</button>
+
+<button
+  type="button"
+  [class.primary-button]="!isLastStep"
+  [class.confirm-button]="isLastStep"
+  (click)="onNext.emit()"
+>
+  {{ isLastStep ? 'Confirm' : 'Next Step '}}
+</button>
