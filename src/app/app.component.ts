@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { TextInputComponent } from './shared/components/text-input/text-input.component';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { PersonalInfoComponent } from './personal-info/personal-info.component';
+import { StepperComponent, StepperStep } from './shared/components/stepper/stepper.component';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,17 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TextInputComponent, ReactiveFormsModule],
+  imports: [StepperComponent, PersonalInfoComponent],
 })
-export class AppComponent implements OnInit {
-  public control = new FormControl<string>('', [Validators.required, Validators.email]);
+export class AppComponent {
+  public readonly steps: StepperStep[] = [
+    { label: 'Personal Info' },
+    { label: 'Select Plan' },
+    { label: 'Add-ons' },
+    { label: 'Summary' },
+  ];
 
-  ngOnInit(): void {
-  }
+  public currentStep = signal(0);
 
   public onCurrentStepChanged(step: number) {}
 }

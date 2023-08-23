@@ -1,7 +1,38 @@
-@use './shared/styles/fonts.scss' as *;
-@use './shared/styles/colors.scss' as *;
+@use './shared/styles/fonts' as *;
+@use './shared/styles/colors' as *;
+@use './shared/styles/utils' as *;
 
-div {
-  max-width: 500px;
-  padding: 50px;
+:host {
+  @include flex;
+  height: 100%;
+}
+
+main {
+  @include flex(row, flex-start, flex-start);
+  width: 940px;
+  height: 600px;
+  border-radius: 16px;
+  background: $white;
+}
+
+.stepper {
+  margin: 16px 0px 16px 16px;
+}
+
+form {
+  padding: 56px 0px 0px 100px;
+}
+
+header {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+h1 {
+  @include font($heading, $denim, 600);
+}
+
+p {
+  @include font($large, $grey);
 }
