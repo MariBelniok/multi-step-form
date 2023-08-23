@@ -13,5 +13,5 @@ import { AppFormService } from '../app-form.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonalInfoComponent {
-  public form = inject(AppFormService).form;
+  public form = inject(AppFormService).personalInfoForm;
 }

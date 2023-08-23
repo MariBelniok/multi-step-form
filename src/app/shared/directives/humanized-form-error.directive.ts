@@ -17,6 +17,7 @@ export class HumanizedFormErrorDirective extends CdkPortalOutlet implements Afte
   private errors = inject(FORM_ERRORS) as any;
   private destroyRef = inject(DestroyRef);
   private componentPortal!: ComponentPortal<InputErrorTextComponent>;
+  private errorText = '';
 
   public ngAfterViewInit(): void {
     this.componentPortal = new ComponentPortal(InputErrorTextComponent);
@@ -32,7 +33,7 @@ export class HumanizedFormErrorDirective extends CdkPortalOutlet implements Afte
             const firstKey = Object.keys(controlErrors)[0];
             const getErrors = this.errors[firstKey];
             const text = getErrors(controlErrors[firstKey]);
-            this.displayError(text);
+            this.checkErrorChanged(text)
           } else if (this.componentPortal.isAttached) {
             this.detach();
           }
@@ -40,14 +41,25 @@ export class HumanizedFormErrorDirective extends CdkPortalOutlet implements Afte
       );
   }
 
-  private displayError(text: string): void {
+  private displayError(): void {
     const portalInjector = Injector.create({
-      providers: [{ provide: DATA_TOKEN, useValue: text }],
+      providers: [{ provide: DATA_TOKEN, useValue: this.errorText }],
     });
     this.componentPortal.injector = portalInjector;
 
-    if (!this.componentPortal.isAttached && text) {
+    if (!this.componentPortal.isAttached) {
       this.attachComponentPortal(this.componentPortal);
     }
+  }
+
+  private checkErrorChanged(text: string): void {
+    if (text === this.errorText) return;
+
+    if (this.componentPortal.isAttached) {
+      this.detach();
+    }
+
+    this.errorText = text;
+    this.displayError();
   }
 }
