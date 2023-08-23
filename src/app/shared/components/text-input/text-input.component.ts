@@ -19,8 +19,11 @@ import { PortalModule } from '@angular/cdk/portal';
   }],
 })
 export class TextInputComponent implements ControlValueAccessor {
-  @Input({ required: true }) 
+  @Input({ required: true })
   public control!: FormControl;
+
+  @Input({ required: true })
+  public label = '';
 
   public value = '';
 
