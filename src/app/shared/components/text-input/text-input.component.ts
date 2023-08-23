@@ -4,6 +4,16 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModu
 import { InputErrorTextComponent } from '../input-error-text/input-error-text.component';
 import { HumanizedFormErrorDirective } from '../../directives/humanized-form-error.directive';
 import { PortalModule } from '@angular/cdk/portal';
+import { NgxMaskDirective } from 'ngx-mask';
+
+const imports = [
+  CommonModule,
+  ReactiveFormsModule,
+  InputErrorTextComponent,
+  HumanizedFormErrorDirective,
+  PortalModule,
+  NgxMaskDirective
+];
 
 @Component({
   selector: 'text-input',
@@ -11,7 +21,7 @@ import { PortalModule } from '@angular/cdk/portal';
   styleUrls: ['./text-input.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, ReactiveFormsModule, InputErrorTextComponent, HumanizedFormErrorDirective, PortalModule],
+  imports,
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: TextInputComponent,
@@ -24,6 +34,12 @@ export class TextInputComponent implements ControlValueAccessor {
 
   @Input({ required: true })
   public label = '';
+
+  @Input()
+  public mask = '';
+
+  @Input()
+  public placeholder = '';
 
   public value = '';
 

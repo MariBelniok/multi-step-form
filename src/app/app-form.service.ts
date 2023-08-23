@@ -8,6 +8,6 @@ export class AppFormService {
   public personalInfoForm = this.fb.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    phone: ['', [Validators.required, Validators.pattern(/^(\+\d\s)(\d{3}\s){2}(\d{3})$/g)]],
+    phone: ['', [Validators.required]],
   });
 }

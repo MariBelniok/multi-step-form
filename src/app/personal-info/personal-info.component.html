@@ -1,14 +1,18 @@
 <text-input
   [label]="'Name'"
   [control]="form.controls.name"
+  [placeholder]="'e.g. Stephen King'"
 ></text-input>
 
 <text-input
   [label]="'Email'"
   [control]="form.controls.email"
+  [placeholder]="'e.g. stephenking@lorem.com'"
 ></text-input>
 
 <text-input
   [label]="'Phone number'"
   [control]="form.controls.phone"
+  [mask]="'+0 000 000 000'"
+  [placeholder]="'e.g. +1 234 567 890'"
 ></text-input>

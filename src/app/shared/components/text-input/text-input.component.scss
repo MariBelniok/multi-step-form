@@ -1,6 +1,2 @@
 @use './../../../shared/styles/form';
 @use './../../../shared/styles/utils' as *;
-
-div {
-  @include flex(row, space-between, center);
-}
