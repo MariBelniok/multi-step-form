@@ -2,7 +2,7 @@
   <div>
     <button
       type="button"
-      [class.selected]="currentStep() === index"
+      [class.selected]="currentStep === index"
       (click)="onStep(index)"
     >
       {{ index + 1 }}

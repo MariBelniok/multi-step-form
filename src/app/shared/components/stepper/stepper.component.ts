@@ -17,13 +17,13 @@ export class StepperComponent {
   @Input({ required: true })
   public steps: StepperStep[] = [];
 
+  @Input({ required: true })
+  public currentStep = 0;
+
   @Output()
   public currentStepChanged = new EventEmitter();
 
-  public currentStep = signal(0);
-
   public onStep(index: number): void {
-    this.currentStep.set(index);
     this.currentStepChanged.emit(index);
   }
 }
