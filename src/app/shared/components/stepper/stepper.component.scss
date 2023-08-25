@@ -34,6 +34,7 @@ button {
   outline: none;
   padding: 8px 12px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
   &.selected {
     color: $denim;
