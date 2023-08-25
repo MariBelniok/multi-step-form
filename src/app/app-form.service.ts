@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { PLAN } from './plan/plan.component';
 
 @Injectable({providedIn: 'root'})
 export class AppFormService {
@@ -10,4 +11,6 @@ export class AppFormService {
     email: ['', [Validators.required, Validators.email]],
     phone: ['', [Validators.required]],
   });
+
+  public planControl = this.fb.control(PLAN.arcade);
 }

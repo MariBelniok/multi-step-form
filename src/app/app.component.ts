@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { StepperComponent, StepperStep } from './shared/components/stepper/stepper.component';
 import { StepperButtonsComponent } from './shared/components/stepper-buttons/stepper-buttons.component';
+import { PlanComponent } from './plan/plan.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { StepperButtonsComponent } from './shared/components/stepper-buttons/ste
   styleUrls: ['./app.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [StepperComponent, PersonalInfoComponent, StepperButtonsComponent],
+  imports: [StepperComponent, PersonalInfoComponent, StepperButtonsComponent, PlanComponent],
 })
 export class AppComponent {
   public readonly steps: StepperStep[] = [

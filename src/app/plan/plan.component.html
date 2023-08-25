@@ -1,0 +1,7 @@
+<selectable-card
+  *ngFor="let plan of plans"
+  [item]="plansMap.get(plan)"
+  [itemKey]="plan"
+  [isSelected]="control.value === plan"
+  (planSelected)="control.setValue($event)"
+></selectable-card>

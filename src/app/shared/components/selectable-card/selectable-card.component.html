@@ -1,0 +1,16 @@
+<main
+  (click)="planSelected.emit(itemKey)"
+  [class.selected]="isSelected"
+>
+  <div>
+    <img
+      alt=""
+      [src]="item.image"
+    />
+
+    <section>
+      <label>{{ item.title }}</label>
+      <p>{{ (item.price | currency) + '/mo' }}</p>
+    </section>
+  </div>
+</main>

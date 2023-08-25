@@ -1,0 +1,42 @@
+@use './../../styles/colors' as *;
+@use './../../styles/fonts' as *;
+@use './../../styles/utils' as *;
+
+main {
+  width: 138px;
+  height: 160px;
+  border: 1px solid $border;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &.selected {
+    border-color: $purple;
+    background-color: $very-light-grey;
+  }
+
+  &:hover {
+    border-color: $purple;
+  }
+}
+
+div {
+  @include flex(column, flex-start, flex-start);
+  gap: 40px;
+  padding: 20px 16px;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+}
+
+label {
+  @include font($large, $denim, 500);
+  display: block;
+  margin-bottom: 8px;
+}
+
+p {
+  @include font($medium, $grey);
+}

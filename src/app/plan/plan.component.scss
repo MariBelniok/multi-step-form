@@ -1,0 +1,8 @@
+@use './../shared/styles/colors' as *;
+@use './../shared/styles/fonts' as *;
+@use './../shared/styles/utils' as *;
+
+:host {
+  @include flex;
+  gap: 18px;
+}
