@@ -4,6 +4,8 @@ import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { StepperComponent, StepperStep } from './shared/components/stepper/stepper.component';
 import { StepperButtonsComponent } from './shared/components/stepper-buttons/stepper-buttons.component';
 import { PlanComponent } from './plan/plan.component';
+import { SwitchInputComponent } from './shared/components/switch-input/switch-input.component';
+import { AppFormService } from './app-form.service';
 
 @Component({
   selector: 'app-root',

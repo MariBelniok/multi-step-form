@@ -1,8 +1,31 @@
 @use './../shared/styles/colors' as *;
 @use './../shared/styles/fonts' as *;
 @use './../shared/styles/utils' as *;
+@use './../shared/styles/form' as *;
 
 :host {
+  @include flex(column);
+  gap: 32px;
+}
+
+.selectable-cards {
   @include flex;
   gap: 18px;
+}
+
+fieldset {
+  @include flex;
+  gap: 24px;
+  border: none;
+  width: 450px;
+  background: $very-light-grey;
+  padding: 14px 0px;
+
+  label {
+    @include font($medium, $grey, 500);
+
+    &.selected {
+      @include font($medium, $denim, 500);
+    }
+  }
 }

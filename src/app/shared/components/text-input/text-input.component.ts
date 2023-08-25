@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { InputErrorTextComponent } from '../input-error-text/input-error-text.component';
-import { HumanizedFormErrorDirective } from '../../directives/humanized-form-error.directive';
 import { PortalModule } from '@angular/cdk/portal';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective } from 'ngx-mask';
+import { ControlValueAccessorDirective } from '../../directives/control-value-accessor.directive';
+import { HumanizedFormErrorDirective } from '../../directives/humanized-form-error.directive';
+import { InputErrorTextComponent } from '../input-error-text/input-error-text.component';
 
 const imports = [
   CommonModule,
@@ -28,10 +29,7 @@ const imports = [
     multi: true,
   }],
 })
-export class TextInputComponent implements ControlValueAccessor {
-  @Input({ required: true })
-  public control!: FormControl;
-
+export class TextInputComponent extends ControlValueAccessorDirective {
   @Input({ required: true })
   public label = '';
 
@@ -40,22 +38,4 @@ export class TextInputComponent implements ControlValueAccessor {
 
   @Input()
   public placeholder = '';
-
-  public value = '';
-
-  public touched = false;
-
-  public onChanged = () => {}
-
-  public onTouched = () => {}
-
-  public writeValue(value: string): void {
-    this.value = value;
-  }
-  public registerOnChange(fn: any): void {
-    this.onChanged = fn;
-  }
-  public registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
 }

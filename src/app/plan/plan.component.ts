@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { SelectableCardComponent } from '../shared/components/selectable-card/selectable-card.component';
 import { AppFormService } from '../app-form.service';
+import { SwitchInputComponent } from '../shared/components/switch-input/switch-input.component';
 
 export enum PLAN {
   arcade = 'arcade',
@@ -9,16 +10,21 @@ export enum PLAN {
   pro = 'pro',
 }
 
+export enum PAYMENT_FREQUENCY {
+  monthly = 'monthly',
+  yearly = 'yearly',
+}
+
 @Component({
   selector: 'plan',
   standalone: true,
-  imports: [CommonModule, SelectableCardComponent],
+  imports: [CommonModule, SelectableCardComponent, SwitchInputComponent],
   templateUrl: './plan.component.html',
   styleUrls: ['./plan.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlanComponent {
-  public control = inject(AppFormService).planControl;
+  public form = inject(AppFormService).planForm;
 
   public readonly plansMap = new Map([
     [
@@ -48,4 +54,6 @@ export class PlanComponent {
   ]);
 
   public plans = Array.from(this.plansMap.keys());
+
+  public PAYMENT_FREQUENCY = PAYMENT_FREQUENCY;
 }

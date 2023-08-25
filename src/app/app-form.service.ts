@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { PLAN } from './plan/plan.component';
+import { PAYMENT_FREQUENCY, PLAN } from './plan/plan.component';
 
 @Injectable({providedIn: 'root'})
 export class AppFormService {
@@ -12,5 +12,8 @@ export class AppFormService {
     phone: ['', [Validators.required]],
   });
 
-  public planControl = this.fb.control(PLAN.arcade);
+  public planForm = this.fb.group({
+    plan: PLAN.arcade,
+    monthlyPayment: false,
+  });
 }
