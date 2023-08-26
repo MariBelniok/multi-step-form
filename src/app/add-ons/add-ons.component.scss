@@ -1,0 +1,50 @@
+@use '../shared/styles/utils' as *;
+@use '../shared/styles/colors' as *;
+@use '../shared/styles/fonts' as *;
+
+:host {
+  @include flex(column);
+  gap: 16px;
+}
+
+main {
+  @include flex(row, space-between, center);
+  cursor: pointer;
+  width: 100%;
+  padding: 16px 24px 20px;
+  border: 1px solid $border;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover,
+  &.selected {
+    border: 1px solid $purple;
+  }
+
+  &.selected {
+    background: $very-light-grey;
+  }
+}
+
+fieldset {
+  @include flex;
+  gap: 24px;
+  border: none;
+}
+
+section {
+  @include flex(column, flex-start, flex-start);
+  gap: 12px;
+
+  label {
+    @include font($large, $denim, 500);
+  }
+
+  p {
+    @include font($medium, $grey);
+  }
+}
+
+h6 {
+  @include font($medium, $purple);
+}

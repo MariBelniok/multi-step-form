@@ -1,0 +1,21 @@
+<ng-container *ngFor="let option of options">
+  <main
+    [class.selected]="option.control.value"
+    (click)="option.control.setValue(!option.control.value)"
+  >
+    <fieldset>
+      <checkbox-input
+        class="checkbox-input"
+        [control]="option.control"
+        [checked]="!!option.control.value"
+      ></checkbox-input>
+
+      <section>
+        <label>{{ option.label }}</label>
+        <p>{{ option.description }}</p>
+      </section>
+    </fieldset>
+
+    <h6>+${{ option.price }}/mo</h6>
+  </main>
+</ng-container>

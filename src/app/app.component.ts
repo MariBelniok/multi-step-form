@@ -6,6 +6,7 @@ import { StepperButtonsComponent } from './shared/components/stepper-buttons/ste
 import { PlanComponent } from './plan/plan.component';
 import { SwitchInputComponent } from './shared/components/switch-input/switch-input.component';
 import { AppFormService } from './app-form.service';
+import { AddOnsComponent } from './add-ons/add-ons.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { AppFormService } from './app-form.service';
   styleUrls: ['./app.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [StepperComponent, PersonalInfoComponent, StepperButtonsComponent, PlanComponent],
+  imports: [StepperComponent, PersonalInfoComponent, StepperButtonsComponent, PlanComponent, AddOnsComponent],
 })
 export class AppComponent {
   public readonly steps: StepperStep[] = [

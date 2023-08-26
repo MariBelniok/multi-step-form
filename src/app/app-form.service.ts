@@ -16,4 +16,10 @@ export class AppFormService {
     plan: PLAN.arcade,
     monthlyPayment: false,
   });
+
+  public addOnsForm = this.fb.group({
+    onlineServices: false,
+    largerStorage: false,
+    customizableProfile: false,
+  });
 }
