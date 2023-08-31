@@ -1,25 +1,43 @@
 <main>
   <stepper
     class="stepper"
-    [steps]="steps"
+    [steps]="stepsLabels"
     [currentStep]="currentStep()"
     (currentStepChanged)="currentStep.set($event)"
   ></stepper>
 
   <form>
     <header>
-      <h1>Personal info</h1>
-      <p>Please provide your name, email address, and phone number.</p>
+      <h1>{{ currentStepDetails()?.label }}</h1>
+      <p>{{ currentStepDetails()?.description }}</p>
     </header>
 
-    <summary></summary>
+    <ng-container *ngIf="currentStep() === FORM_STEP.personalInfo">
+      <personal-info></personal-info>
+    </ng-container>
 
+    <ng-container *ngIf="currentStep() === FORM_STEP.selectPlan">
+      <plan></plan>
+    </ng-container>
+
+    <ng-container *ngIf="currentStep() === FORM_STEP.addOns">
+      <add-ons></add-ons>
+    </ng-container>
+
+    <ng-container *ngIf="currentStep() === FORM_STEP.summary">
+      <summary
+        (changePlan)="currentStep.set(FORM_STEP.selectPlan)"
+      ></summary>
+    </ng-container>
+  </form>
+
+  <footer>
     <stepper-buttons
       class="stepper-buttons"
       [isFirstStep]="currentStep() === 0"
-      [isLastStep]="currentStep() === steps.length - 1"
+      [isLastStep]="currentStep() === steps.size - 1"
       (onPrevious)="onCurrentStepChanged('previous')"
       (onNext)="onCurrentStepChanged('next')"
     ></stepper-buttons>
-  </form>
+  </footer>
 </main>

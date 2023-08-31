@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PAYMENT_FREQUENCY, PLAN } from './plan/plan.component';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AppFormService {
   public fb = inject(FormBuilder);
 
