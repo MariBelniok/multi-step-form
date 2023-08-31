@@ -20,7 +20,17 @@ button {
 }
 
 .text-button {
-  @include font($large, $grey, 500);
+  @include font($large, $denim, 500);
+}
+
+.link-button {
+  @include font($medium, $grey);
+  text-decoration: underline;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    color: $purple
+  }
 }
 
 .primary-button {

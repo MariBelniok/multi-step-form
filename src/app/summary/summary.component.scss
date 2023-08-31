@@ -1,0 +1,59 @@
+@use '../shared/styles/fonts' as *;
+@use '../shared/styles/colors' as *;
+@use '../shared/styles/buttons' as *;
+@use '../shared/styles/utils' as *;
+
+main {
+  @include flex(column, flex-start, flex-start);
+  gap: 24px;
+  background-color: $very-light-grey;
+  border-radius: 8px;
+  padding: 16px 24px;
+}
+
+header, section, hr {
+  width: 100%;
+}
+
+header {
+  @include flex(row, space-between, center);
+
+  h4 {
+    @include font($large, $denim, 500);
+  }
+
+  div {
+    @include flex(column, flex-start, flex-start);
+    gap: 10px;
+  }
+}
+
+hr {
+  height: 1px;
+  background: $grey;
+  border: none;
+}
+
+section {
+  @include flex(column, flex-start, center);
+  gap: 16px;
+
+}
+
+label {
+  @include font($medium, $grey);
+  line-height: 20px;
+}
+
+p {
+  @include font($medium, $denim);
+}
+
+div, footer {
+  @include flex(row, space-between, center);
+  width: 100%;
+}
+
+footer {
+  padding: 24px;
+}
