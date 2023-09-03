@@ -1,6 +1,7 @@
 @use './../../styles/colors' as *;
 @use './../../styles/fonts' as *;
 @use './../../styles/utils' as *;
+@use './../../styles/breakpoint' as *;
 
 main {
   width: 138px;
@@ -18,12 +19,22 @@ main {
   &:hover {
     border-color: $purple;
   }
+
+  @include breakpoint {
+    min-width: 295px;
+    height: 77px;
+  }
 }
 
 div {
   @include flex(column, flex-start, flex-start);
   gap: 40px;
   padding: 20px 16px;
+
+  @include breakpoint {
+    @include flex(row, flex-start, flex-start);
+    gap: 14px;
+  }
 }
 
 img {

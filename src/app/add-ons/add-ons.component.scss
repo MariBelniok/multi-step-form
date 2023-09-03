@@ -1,6 +1,7 @@
 @use '../shared/styles/utils' as *;
 @use '../shared/styles/colors' as *;
 @use '../shared/styles/fonts' as *;
+@use '../shared/styles/breakpoint' as *;
 
 :host {
   @include flex(column);
@@ -36,15 +37,31 @@ section {
   @include flex(column, flex-start, flex-start);
   gap: 12px;
 
+  @include breakpoint {
+    gap: 6px;
+  }
+
   label {
     @include font($large, $denim, 500);
+
+    @include breakpoint {
+      font-size: $medium;
+    }
   }
 
   p {
     @include font($medium, $grey);
+
+    @include breakpoint {
+      font-size: $small;
+    }
   }
 }
 
 h6 {
   @include font($medium, $purple);
+
+  @include breakpoint {
+    font-size: $small;
+  }
 }

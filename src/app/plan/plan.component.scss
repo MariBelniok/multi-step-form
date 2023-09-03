@@ -2,6 +2,7 @@
 @use './../shared/styles/fonts' as *;
 @use './../shared/styles/utils' as *;
 @use './../shared/styles/form' as *;
+@use './../shared/styles/breakpoint' as *;
 
 :host {
   @include flex(column);
@@ -11,6 +12,10 @@
 .selectable-cards {
   @include flex;
   gap: 18px;
+
+  @include breakpoint {
+    @include flex(column)
+  }
 }
 
 fieldset {
@@ -20,6 +25,10 @@ fieldset {
   width: 450px;
   background: $very-light-grey;
   padding: 14px 0px;
+
+  @include breakpoint {
+    width: 295px;
+  }
 
   label {
     @include font($medium, $grey, 500);

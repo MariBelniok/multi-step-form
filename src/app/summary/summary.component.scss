@@ -2,6 +2,7 @@
 @use '../shared/styles/colors' as *;
 @use '../shared/styles/buttons' as *;
 @use '../shared/styles/utils' as *;
+@use '../shared/styles/breakpoint' as *;
 
 main {
   @include flex(column, flex-start, flex-start);
@@ -20,6 +21,10 @@ header {
 
   h4 {
     @include font($large, $denim, 500);
+
+    @include breakpoint {
+      font-size: $medium;
+    }
   }
 
   div {

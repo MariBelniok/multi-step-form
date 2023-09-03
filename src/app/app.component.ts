@@ -81,7 +81,7 @@ export class AppComponent {
 
   public FORM_STEP = FORM_STEP;
 
-  public currentStep = signal(FORM_STEP.personalInfo);
+  public currentStep = signal(FORM_STEP.selectPlan);
 
   public currentStepDetails = computed(() => this.steps.get(this.currentStep()))
 
