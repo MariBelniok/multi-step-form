@@ -2,7 +2,7 @@
   <stepper
     class="stepper"
     [steps]="stepsLabels"
-    [currentStep]="currentStep()"
+    [currentStep]="currentStep() === FORM_STEP.thankYou ? currentStep() - 1 : currentStep()"
     (currentStepChanged)="currentStep.set($event)"
   ></stepper>
 
@@ -29,10 +29,15 @@
         (changePlan)="currentStep.set(FORM_STEP.selectPlan)"
       ></summary>
     </ng-container>
+
+    <ng-container *ngIf="currentStep() === FORM_STEP.thankYou">
+      <thank-you></thank-you>
+    </ng-container>
   </form>
 
   <footer>
     <stepper-buttons
+      *ngIf="currentStep() < FORM_STEP.thankYou"
       class="stepper-buttons"
       [isFirstStep]="currentStep() === 0"
       [isLastStep]="currentStep() === steps.size - 1"

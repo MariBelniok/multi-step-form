@@ -1,0 +1,19 @@
+@use './../shared/styles/fonts' as *;
+@use './../shared/styles/colors' as *;
+@use './../shared/styles/utils' as *;
+
+:host {
+  @include flex(column);
+}
+
+h1 {
+  @include font($subHeading, $denim, 600);
+  line-height: 1.5;
+  margin: 24px 0px 10px;
+}
+
+p {
+  @include font($large, $grey);
+  line-height: 1.5;
+  margin-bottom: 60px;
+}

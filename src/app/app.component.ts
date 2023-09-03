@@ -19,12 +19,14 @@ import { AppFormService } from './app-form.service';
 import { AddOnsComponent } from './add-ons/add-ons.component';
 import { SummaryComponent } from './summary/summary.component';
 import { CommonModule } from '@angular/common';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 enum FORM_STEP {
   personalInfo,
   selectPlan,
   addOns,
   summary,
+  thankYou,
 }
 
 @Component({
@@ -41,6 +43,7 @@ enum FORM_STEP {
     StepperButtonsComponent,
     StepperComponent,
     SummaryComponent,
+    ThankYouComponent,
   ],
 })
 export class AppComponent {
@@ -81,13 +84,19 @@ export class AppComponent {
 
   public FORM_STEP = FORM_STEP;
 
-  public currentStep = signal(FORM_STEP.selectPlan);
+  public currentStep = signal(FORM_STEP.thankYou);
 
   public currentStepDetails = computed(() => this.steps.get(this.currentStep()))
 
   public onCurrentStepChanged(direction: 'next' | 'previous') {
-    this.currentStep.update((currentStep) =>
-      direction === 'next' ? currentStep + 1 : currentStep - 1
-    );
+    let currentStep = this.currentStep();
+
+    if (currentStep >= FORM_STEP.personalInfo || currentStep <= FORM_STEP.thankYou) {
+      this.currentStep.update((currentStep) =>
+        direction === 'next'
+          ? currentStep + 1
+          : currentStep - 1
+      );
+    }
   }
 }
