@@ -1,7 +1,7 @@
 <main>
   <header>
     <div>
-      <h4>Arcade (Monthly)</h4>
+      <h4>{{ plan | titlecase }} {{ yearlyPayment ? '(Yearly)' : '(Monthly)' }}</h4>
       <button
         class="link-button"
         type="button"
@@ -11,25 +11,20 @@
       </button>
     </div>
 
-    <h4>$9/mo</h4>
+    <h4>{{ '+' + plansMap.get(plan)?.price + '/mo' }}</h4>
   </header>
 
   <hr>
 
   <section>
-    <div>
-      <label>Online service</label>
-      <p>+$1/mo</p>
-    </div>
-
-    <div>
-      <label>Online service</label>
-      <p>+$1/mo</p>
+    <div *ngFor="let addOn of selectedAddOns">
+      <label>{{ addOn.label }}</label>
+      <p>{{ '+$' + addOn.price + '/mo' }}</p>
     </div>
   </section>
 </main>
 
 <footer>
   <label>Total (per month)</label>
-  <p>+12/mo</p>
+  <p>{{ '+' + totalPaymentValue + '/mo' }}</p>
 </footer>

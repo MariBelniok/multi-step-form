@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PAYMENT_FREQUENCY, PLAN } from './plan/plan.component';
+import { ADD_ON } from './add-ons/add-ons.component';
 
 @Injectable({ providedIn: 'root' })
 export class AppFormService {
@@ -14,12 +15,12 @@ export class AppFormService {
 
   public planForm = this.fb.group({
     plan: PLAN.arcade,
-    monthlyPayment: false,
+    yearlyPayment: false,
   });
 
   public addOnsForm = this.fb.group({
-    onlineServices: false,
-    largerStorage: false,
-    customizableProfile: false,
+    [ADD_ON.onlineServices]: false,
+    [ADD_ON.largerStorage]: false,
+    [ADD_ON.customizableProfile]: false,
   });
 }

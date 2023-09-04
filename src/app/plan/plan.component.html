@@ -9,15 +9,15 @@
 </section>
 
 <fieldset>
-  <label [class.selected]="!form.value.monthlyPayment">
+  <label [class.selected]="!form.value.yearlyPayment">
     Monthly
   </label>
 
   <switch-input
-    [control]="form.controls.monthlyPayment"
+    [control]="form.controls.yearlyPayment"
   ></switch-input>
 
-  <label [class.selected]="form.value.monthlyPayment">
+  <label [class.selected]="form.value.yearlyPayment">
     Yearly
   </label>
 </fieldset>

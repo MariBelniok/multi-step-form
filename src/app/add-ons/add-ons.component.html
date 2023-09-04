@@ -1,13 +1,13 @@
 <ng-container *ngFor="let option of options">
   <main
-    [class.selected]="option.control.value"
-    (click)="option.control.setValue(!option.control.value)"
+    [class.selected]="form.value[option.control]"
+    (click)="form.controls[option.control].setValue(!form.value[option.control])"
   >
     <fieldset>
       <checkbox-input
         class="checkbox-input"
-        [control]="option.control"
-        [checked]="!!option.control.value"
+        [control]="form.controls[option.control]"
+        [checked]="!!form.value[option.control]"
       ></checkbox-input>
 
       <section>

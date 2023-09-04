@@ -15,6 +15,33 @@ export enum PAYMENT_FREQUENCY {
   yearly = 'yearly',
 }
 
+export const plansMap = new Map([
+  [
+    PLAN.arcade,
+    {
+      title: 'Arcade',
+      price: 9,
+      image: 'assets/images/icon-arcade.svg',
+    },
+  ],
+  [
+    PLAN.advanced,
+    {
+      title: 'Advanced',
+      price: 12,
+      image: 'assets/images/icon-advanced.svg',
+    },
+  ],
+  [
+    PLAN.pro,
+    {
+      title: 'Pro',
+      price: 15,
+      image: 'assets/images/icon-pro.svg',
+    },
+  ],
+]);
+
 @Component({
   selector: 'plan',
   standalone: true,
@@ -26,34 +53,9 @@ export enum PAYMENT_FREQUENCY {
 export class PlanComponent {
   public form = inject(AppFormService).planForm;
 
-  public readonly plansMap = new Map([
-    [
-      PLAN.arcade,
-      {
-        title: 'Arcade',
-        price: 9,
-        image: 'assets/images/icon-arcade.svg',
-      },
-    ],
-    [
-      PLAN.advanced,
-      {
-        title: 'Advanced',
-        price: 12,
-        image: 'assets/images/icon-advanced.svg',
-      },
-    ],
-    [
-      PLAN.pro,
-      {
-        title: 'Pro',
-        price: 15,
-        image: 'assets/images/icon-pro.svg',
-      },
-    ],
-  ]);
+  public plansMap = plansMap;
 
-  public plans = Array.from(this.plansMap.keys());
+  public plans = Array.from(plansMap.keys());
 
   public PAYMENT_FREQUENCY = PAYMENT_FREQUENCY;
 }
