@@ -14,14 +14,16 @@
     <h4>{{ '+' + plansMap.get(plan)?.price + '/mo' }}</h4>
   </header>
 
-  <hr>
+  <ng-container *ngIf="selectedAddOns?.length">
+    <hr>
 
-  <section>
-    <div *ngFor="let addOn of selectedAddOns">
-      <label>{{ addOn.label }}</label>
-      <p>{{ '+$' + addOn.price + '/mo' }}</p>
-    </div>
-  </section>
+    <section>
+      <div *ngFor="let addOn of selectedAddOns">
+        <label>{{ addOn.label }}</label>
+        <p>{{ '+$' + addOn.price + '/mo' }}</p>
+      </div>
+    </section>
+  </ng-container>
 </main>
 
 <footer>
