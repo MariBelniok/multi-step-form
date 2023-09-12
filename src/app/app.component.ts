@@ -1,25 +1,22 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
   computed,
   inject,
-  signal,
+  signal
 } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AddOnsComponent } from './add-ons/add-ons.component';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
+import { PlanComponent } from './plan/plan.component';
+import { StepperButtonsComponent } from './shared/components/stepper-buttons/stepper-buttons.component';
 import {
   StepperComponent,
   StepperStep,
 } from './shared/components/stepper/stepper.component';
-import { StepperButtonsComponent } from './shared/components/stepper-buttons/stepper-buttons.component';
-import { PlanComponent } from './plan/plan.component';
-import { SwitchInputComponent } from './shared/components/switch-input/switch-input.component';
-import { AppFormService } from './app-form.service';
-import { AddOnsComponent } from './add-ons/add-ons.component';
 import { SummaryComponent } from './summary/summary.component';
-import { CommonModule } from '@angular/common';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { AppFormService } from './app-form.service';
 
 enum FORM_STEP {
   personalInfo,
@@ -47,19 +44,23 @@ enum FORM_STEP {
   ],
 })
 export class AppComponent {
+  private form = inject(AppFormService);
+
   public readonly steps = new Map([
     [
       FORM_STEP.personalInfo,
       {
         label: 'Personal Info',
-        description: 'Please provide your name, email address, and phone number. ',
+        description: 'Please provide your name, email address, and phone number.',
+        form: this.form.personalInfoForm,
       },
     ],
     [
       FORM_STEP.selectPlan,
       {
         label: 'Select Plan',
-        description: 'You have the option of monthly or yearly billing. ',
+        description: 'You have the option of monthly or yearly billing.',
+        form: this.form.planForm,
       },
     ],
     [
@@ -67,6 +68,7 @@ export class AppComponent {
       {
         label: 'Add-ons',
         description: 'Add-ons help enhance your gaming experience.',
+        form: this.form.addOnsForm,
       },
     ],
     [
@@ -88,10 +90,24 @@ export class AppComponent {
 
   public currentStepDetails = computed(() => this.steps.get(this.currentStep()))
 
+  public isFormValid(): boolean {
+    const stepForm = this.steps.get(this.currentStep())?.form ?? null;
+
+    if(!stepForm) {
+      return true;
+    }
+
+    stepForm?.updateValueAndValidity();
+
+    return stepForm.valid;
+  }
+
   public onCurrentStepChanged(direction: 'next' | 'previous') {
     let currentStep = this.currentStep();
 
-    if (currentStep >= FORM_STEP.personalInfo || currentStep <= FORM_STEP.thankYou) {
+    if (this.isFormValid() &&
+        (currentStep >= FORM_STEP.personalInfo || currentStep <= FORM_STEP.thankYou)
+      ) {
       this.currentStep.update((currentStep) =>
         direction === 'next'
           ? currentStep + 1

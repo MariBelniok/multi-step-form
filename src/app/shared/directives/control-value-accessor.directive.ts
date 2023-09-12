@@ -10,7 +10,7 @@ export class ControlValueAccessorDirective implements ControlValueAccessor {
 
   public value = '';
 
-  public touched = false;
+  public touched = true;
 
   public onChanged = () => {}
 

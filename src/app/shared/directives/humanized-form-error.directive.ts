@@ -22,23 +22,27 @@ export class HumanizedFormErrorDirective extends CdkPortalOutlet implements Afte
   public ngAfterViewInit(): void {
     this.componentPortal = new ComponentPortal(InputErrorTextComponent);
 
+    this.checkErrors();
+
     this.control.valueChanges
       ?.pipe(
         distinctUntilChanged(),
         takeUntilDestroyed(this.destroyRef)
       ).subscribe(
-        () => {
-          const controlErrors = this.control.errors;
-          if (controlErrors) {
-            const firstKey = Object.keys(controlErrors)[0];
-            const getErrors = this.errors[firstKey];
-            const text = getErrors(controlErrors[firstKey]);
-            this.checkErrorChanged(text)
-          } else if (this.componentPortal.isAttached) {
-            this.detach();
-          }
-        },
+        () => this.checkErrors(),
       );
+  }
+
+  private checkErrors(): void {
+    const controlErrors = this.control.errors;
+    if (controlErrors) {
+      const firstKey = Object.keys(controlErrors)[0];
+      const getErrors = this.errors[firstKey];
+      const text = getErrors(controlErrors[firstKey]);
+      this.checkErrorAttachment(text)
+    } else if (this.componentPortal.isAttached) {
+      this.detach();
+    }
   }
 
   private displayError(): void {
@@ -52,7 +56,7 @@ export class HumanizedFormErrorDirective extends CdkPortalOutlet implements Afte
     }
   }
 
-  private checkErrorChanged(text: string): void {
+  private checkErrorAttachment(text: string): void {
     if (text === this.errorText) return;
 
     if (this.componentPortal.isAttached) {
